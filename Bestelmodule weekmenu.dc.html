@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/waste-warrior-design-system-7908025b-0e2e-433d-98e3-e76490f174df/colors_and_type.css">
+<script src="_ds/waste-warrior-design-system-7908025b-0e2e-433d-98e3-e76490f174df/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: oklch(0.90 0.014 70); font-family: "Asap", system-ui, sans-serif; overflow: hidden; }
+  a { color: oklch(0.420 0.053 190); text-decoration: none; }
+  a:hover { color: oklch(0.700 0.110 68); }
+</style>
+</helmet>
+<div style="width: 100vw; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; background: oklch(0.90 0.014 70);">
+<div style="width: {{ baseW }}; height: {{ baseH }}; flex: 0 0 auto; transform-origin: center center; transform: scale({{ scale }}); overflow: hidden; display: flex; flex-direction: column; background: var(--background); color: var(--foreground); font-family: var(--font-body);">
+
+  <div style="height: 88px; flex: 0 0 88px; display: flex; align-items: center; gap: 24px; padding: 0 {{ pad }}; background: oklch(0.295 0.030 175); color: oklch(0.985 0.010 80);">
+    <img src="assets/logo-white.svg" alt="Waste Warrior" style="height: 26px; width: auto;">
+    <div style="width: 1px; height: 34px; background: oklch(0.985 0.010 80 / 0.25);"></div>
+    <div style="display: flex; align-items: baseline; gap: 12px;">
+      <span style="font-family: var(--font-heading); font-size: 24px; font-weight: 600;">Bestelmodule</span>
+      <span style="font-size: 15px; opacity: 0.72; white-space: nowrap;">{{ modeSubtitle }}</span>
+    </div>
+    <div style="display: {{ stepsDisplay }}; gap: 10px; margin-left: 16px;">
+      <span style="font-size: 14px; padding: 8px 16px; border-radius: var(--radius-pill); background: oklch(0.85 0.150 124); color: oklch(0.24 0.03 175); font-weight: 600;">1 · Keuzes per persoon</span>
+      <span style="font-size: 14px; padding: 8px 16px; border-radius: var(--radius-pill); background: oklch(0.985 0.010 80 / 0.12);">2 · Bestellijst controleren</span>
+    </div>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 24px; font-size: 15px;">
+      <span style="opacity: 0.72; white-space: nowrap;">Woongroep 3</span>
+      <span style="padding: 8px 16px; border-radius: var(--radius-pill); border: 1px solid oklch(0.985 0.010 80 / 0.3); white-space: nowrap;">{{ groupLabel }}</span>
+    </div>
+  </div>
+
+  <div style="flex: 1; min-height: 0; display: flex; gap: 20px; padding: 24px {{ pad }} 0 {{ pad }};">
+
+  <div style="width: {{ sideW }}; flex: 0 0 {{ sideW }}; min-height: 0; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 14px;">
+    <div style="font-size: 11px; letter-spacing: 0.08em; color: var(--muted-foreground); padding: 0 6px 10px 6px;">{{ sideTitle }}</div>
+    <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 4px; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: auto; scrollbar-gutter: stable; scrollbar-color: var(--primary) var(--muted); padding-right: 8px;">
+      <sc-for list="{{ sideItems }}" as="r" hint-placeholder-count="12">
+        <button style="flex: 0 0 auto; display: flex; align-items: center; gap: 12px; height: {{ sideRowH }}; min-height: {{ sideRowH }}; padding: 0 12px; border-radius: var(--radius); border: 1px solid {{ r.border }}; background: {{ r.bg }}; color: var(--foreground); cursor: pointer; text-align: left;" style-hover="border-color: var(--primary);" onClick="{{ r.select }}">
+          <span style="width: 40px; height: 40px; flex: 0 0 40px; border-radius: var(--radius-pill); background: {{ r.avatarBg }}; color: {{ r.avatarFg }}; font-size: 15px; font-weight: 600; display: flex; align-items: center; justify-content: center;">{{ r.initials }}</span>
+          <span style="flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 5px;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: {{ dayNameSize }}; line-height: 1.1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ r.name }}</span>
+            <span style="display: flex; gap: 3px;">
+              <sc-for list="{{ r.dots }}" as="dot" hint-placeholder-count="7">
+                <span style="width: 11px; height: 6px; border-radius: 2px; background: {{ dot.color }};"></span>
+              </sc-for>
+            </span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+    <div style="padding: 10px 6px 0 6px; font-size: 13px; color: var(--muted-foreground);">{{ rosterHint }}</div>
+  </div>
+
+  <div style="flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column;">
+    <div style="display: flex; align-items: flex-end; gap: 24px; padding-bottom: 16px;">
+      <div>
+        <div style="font-size: var(--fs-eyebrow); letter-spacing: 0.08em; color: var(--muted-foreground); padding-bottom: 6px;">{{ weekRange }}</div>
+        <div style="font-family: var(--font-heading); font-size: {{ titleSize }}; line-height: 1.05; font-weight: 700;">{{ headline }}</div>
+      </div>
+      <div style="margin-left: auto; display: flex; align-items: center; gap: 12px;">
+        <span style="font-size: 14px; color: var(--muted-foreground);">Indeling</span>
+        <div style="display: flex; gap: 4px; padding: 4px; border-radius: var(--radius-pill); background: var(--muted);">
+          <button style="height: 48px; padding: 0 22px; border: none; border-radius: var(--radius-pill); background: {{ personModeBg }}; color: {{ personModeFg }}; font-family: var(--font-heading); font-size: 17px; font-weight: 600; cursor: pointer;" onClick="{{ setPersonMode }}">Per persoon</button>
+          <button style="height: 48px; padding: 0 22px; border: none; border-radius: var(--radius-pill); background: {{ dayModeBg }}; color: {{ dayModeFg }}; font-family: var(--font-heading); font-size: 17px; font-weight: 600; cursor: pointer;" onClick="{{ setDayMode }}">Per dag</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 16px 20px 18px 20px;">
+
+      <div style="display: flex; align-items: center; gap: 14px; padding-bottom: 12px; border-bottom: 1px solid var(--border);">
+        <span style="width: 46px; height: 46px; flex: 0 0 46px; border-radius: var(--radius-pill); background: var(--primary); color: var(--primary-foreground); font-family: var(--font-heading); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center;">{{ headBadge }}</span>
+        <div>
+          <div style="font-family: var(--font-heading); font-size: {{ personSize }}; font-weight: 700; line-height: 1.1;">{{ headTitle }}</div>
+          <div style="font-size: 14px; color: var(--muted-foreground);">{{ headSub }}</div>
+        </div>
+        <div style="display: {{ dishesDisplay }}; flex-direction: column; gap: 4px; padding-left: 24px;">
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 14px; height: 14px; flex: 0 0 14px; border-radius: 3px; background: var(--primary);"></span>
+            <span style="font-family: var(--font-heading); font-weight: 600; font-size: {{ recipeSize }}; line-height: 1.15;">{{ dayA }}</span>
+          </div>
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="width: 14px; height: 14px; flex: 0 0 14px; border-radius: 3px; background: var(--secondary);"></span>
+            <span style="font-family: var(--font-heading); font-weight: 600; font-size: {{ recipeSize }}; line-height: 1.15;">{{ dayB }}</span>
+          </div>
+        </div>
+        <div style="margin-left: auto; display: flex; align-items: center; gap: 14px;">
+          <span style="display: flex; align-items: center; gap: 7px; font-size: 14px; white-space: nowrap;"><span style="width: 12px; height: 12px; border-radius: 3px; background: var(--primary);"></span>optie A</span>
+          <span style="display: flex; align-items: center; gap: 7px; font-size: 14px; white-space: nowrap;"><span style="width: 12px; height: 12px; border-radius: 3px; background: var(--secondary);"></span>optie B</span>
+          <span style="display: flex; align-items: center; gap: 7px; font-size: 14px; white-space: nowrap;"><span style="width: 12px; height: 12px; border-radius: 3px; border: 2px solid var(--border);"></span>geen eten</span>
+        </div>
+      </div>
+
+      <div style="flex: 1; min-height: 0; display: flex; flex-direction: column; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: auto; scrollbar-gutter: stable; scrollbar-color: var(--primary) var(--muted); padding-right: 12px;">
+        <sc-for list="{{ rows }}" as="d" hint-placeholder-count="7">
+          <div style="flex: 0 0 auto; min-height: {{ rowH }}; display: flex; align-items: center; gap: {{ cellGap }}; border-bottom: 1px solid var(--border); padding: 10px 0;">
+            <div style="width: {{ dayCol }}; flex: 0 0 {{ dayCol }}; display: flex; flex-direction: column; gap: 2px;">
+              <div style="display: flex; align-items: baseline; gap: 8px;">
+                <span style="font-family: var(--font-heading); font-size: {{ dayNameSize }}; font-weight: 700;">{{ d.title }}</span>
+                <span style="font-size: 14px; color: var(--muted-foreground);">{{ d.date }}</span>
+              </div>
+              <div style="font-size: 13px; color: var(--muted-foreground);">{{ d.totals }}</div>
+            </div>
+            <button style="flex: 1; min-width: 0; height: {{ btnH }}; display: flex; align-items: center; gap: 12px; text-align: left; padding: 0 16px; border-radius: var(--radius); border: 2px solid {{ d.borderA }}; background: {{ d.bgA }}; color: {{ d.fgA }}; cursor: pointer;" onClick="{{ d.pickA }}">
+              <span style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; flex: 0 0 auto;">{{ d.markA }}A</span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: {{ recipeSize }}; line-height: 1.15; text-wrap: pretty;">{{ d.aLabel }}</span>
+            </button>
+            <button style="flex: 1; min-width: 0; height: {{ btnH }}; display: flex; align-items: center; gap: 12px; text-align: left; padding: 0 16px; border-radius: var(--radius); border: 2px solid {{ d.borderB }}; background: {{ d.bgB }}; color: {{ d.fgB }}; cursor: pointer;" onClick="{{ d.pickB }}">
+              <span style="font-family: var(--font-heading); font-size: 22px; font-weight: 700; flex: 0 0 auto;">{{ d.markB }}B</span>
+              <span style="font-family: var(--font-heading); font-weight: 600; font-size: {{ recipeSize }}; line-height: 1.15; text-wrap: pretty;">{{ d.bLabel }}</span>
+            </button>
+            <button style="width: {{ noneCol }}; flex: 0 0 {{ noneCol }}; height: {{ btnH }}; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; border-radius: var(--radius); border: 2px solid {{ d.borderN }}; background: {{ d.bgN }}; color: {{ d.fgN }}; cursor: pointer;" onClick="{{ d.pickN }}">
+              <span style="font-size: 20px; line-height: 1;">✕</span>
+              <span style="font-size: 14px;">geen eten</span>
+            </button>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 14px; padding-top: 12px;">
+        <span style="font-size: 14px; color: var(--muted-foreground);">{{ dayPageLabel }}</span>
+        <span style="margin-left: auto; font-size: 14px; color: var(--muted-foreground);">{{ scrollHint }}</span>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div style="height: 96px; flex: 0 0 96px; display: flex; align-items: center; gap: 32px; padding: 0 {{ pad }}; margin-top: 18px; background: oklch(0.985 0.010 80); border-top: 1px solid var(--border);">
+    <div style="display: flex; gap: {{ statGap }};">
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; color: var(--muted-foreground);">Dagen</div>
+        <div style="font-family: var(--font-heading); font-size: 23px; font-weight: 700; white-space: nowrap;">7 · ma t/m zo</div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; color: var(--muted-foreground);">Porties totaal</div>
+        <div style="font-family: var(--font-heading); font-size: 23px; font-weight: 700; white-space: nowrap;">{{ grandTotal }}</div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; color: var(--muted-foreground);">Gerechten</div>
+        <div style="font-family: var(--font-heading); font-size: 23px; font-weight: 700; white-space: nowrap;">14 recepten</div>
+      </div>
+      <div>
+        <div style="font-size: 11px; letter-spacing: 0.08em; color: var(--muted-foreground);">Geen eten</div>
+        <div style="font-family: var(--font-heading); font-size: 23px; font-weight: 700; white-space: nowrap;">{{ skipTotal }}</div>
+      </div>
+    </div>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 16px;">
+      <a href="Bestellijst%20ingredienten.dc.html" style="height: 58px; padding: 0 30px; display: flex; align-items: center; border-radius: var(--radius); background: var(--primary); color: var(--primary-foreground); font-family: var(--font-heading); font-size: 20px; font-weight: 600;" style-hover="filter: brightness(0.95); color: var(--primary-foreground);">Naar de bestellijst</a>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080},&quot;weekLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Week 35&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Bestelling&quot;}}">
+const DAYS = [
+  { day: "Maandag", date: "24 aug", a: "All-day Burrito", b: "Kibbeling met koninginnegroenten" },
+  { day: "Dinsdag", date: "25 aug", a: "Penne met champignon truffelroomsaus", b: "Smoor terong met nasi kuning" },
+  { day: "Woensdag", date: "26 aug", a: "Stamppot zeekraal met kabeljauw", b: "Spaghetti met broccoli en mozzarella" },
+  { day: "Donderdag", date: "27 aug", a: "Rendang met nasi kuning", b: "Polentataartje" },
+  { day: "Vrijdag", date: "28 aug", a: "Omelet met kerriesaus", b: "Sticky tempeh en knolselderij saté" },
+  { day: "Zaterdag", date: "29 aug", a: "Boerenkoolsoep", b: "De Nieuwe Nassen Burger" },
+  { day: "Zondag", date: "30 aug", a: "Pompoen curry soep", b: "Suppe en Flammkuchen" }
+];
+
+const PEOPLE_RAW = [
+  "Sanne de Wit", "Youssef Bakker", "Marit Jansen", "Tim Oosterhuis",
+  "Fleur van Dijk", "Bram Kuiper", "Noor el Amrani", "Daan Vermeulen",
+  "Ilse Hoekstra", "Ravi Nandram", "Guus Lammers", "Hanna Peters"
+];
+
+const PICKS_RAW = [
+  "aababna", "abbaaba", "aaabbab", "abaanba",
+  "aabbaab", "abaabab", "aaanabb", "abbabaa",
+  "aabaaba", "abnabbb", "aababab", "abbaanb"
+];
+
+const ORDER = PEOPLE_RAW.map((n, i) => i)
+  .sort((x, y) => PEOPLE_RAW[x].localeCompare(PEOPLE_RAW[y], "nl"));
+
+const PEOPLE = ORDER.map(i => PEOPLE_RAW[i]);
+const PICKS = ORDER.map(i => PICKS_RAW[i]);
+
+const DAY_PAGE = 3;
+
+class Component extends DCLogic {
+  state = {
+    picks: PICKS.map(p => p.split("")),
+    person: 0,
+    dayPage: 0,
+    scale: 1,
+    layout: "wide",
+    base: [1920, 1080]
+  };
+
+  componentDidMount() {
+    this.fit = () => {
+      const w = window.innerWidth, h = window.innerHeight;
+      const portrait = h > w * 1.05;
+      const layout = portrait ? "portrait" : (w >= 1400 ? "wide" : "landscape");
+      const base = layout === "portrait" ? [834, 1194]
+        : layout === "landscape" ? [1366, 1024] : [1920, 1080];
+      const s = Math.min(w / base[0], h / base[1]);
+      this.setState({ layout, base, scale: Math.round(s * 1000) / 1000 });
+    };
+    this.fit();
+    window.addEventListener("resize", this.fit);
+    try {
+      const saved = JSON.parse(localStorage.getItem("ww-weekmenu-picks") || "null");
+      if (saved && saved.length === PEOPLE.length) this.setState({ picks: saved });
+    } catch (e) {}
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.fit);
+  }
+
+  pick(pi, di, val) {
+    this.setState(s => {
+      const picks = s.picks.map(row => row.slice());
+      picks[pi][di] = val;
+      try { localStorage.setItem("ww-weekmenu-picks", JSON.stringify(picks)); } catch (e) {}
+      return { picks };
+    });
+  }
+
+  renderVals() {
+    const L = this.state.layout;
+    const picks = this.state.picks;
+    const size = PEOPLE.length;
+    const week = this.props.weekLabel ?? "Week 35";
+
+    const pi = Math.min(this.state.person, size - 1);
+    const mode = this.state.mode || "person";
+    const di0 = Math.min(this.state.day || 0, DAYS.length - 1);
+
+    let servedTotal = 0, skipTotal = 0;
+    DAYS.forEach((d, di) => {
+      picks.forEach(row => { if (row[di] === "n") skipTotal += 1; else servedTotal += 1; });
+    });
+
+    const dayTotals = di => {
+      let a = 0, b = 0, n = 0;
+      picks.forEach(row => {
+        if (row[di] === "a") a += 1;
+        else if (row[di] === "b") b += 1;
+        else n += 1;
+      });
+      return "groep: " + a + "×A · " + b + "×B" + (n > 0 ? " · " + n + "× geen" : "");
+    };
+
+    const optionRow = (rowPi, di, title, date, totals, aLabel, bLabel) => {
+      const v = picks[rowPi][di];
+      const isA = v === "a", isB = v === "b", isN = v === "n";
+      return {
+        title, date, totals, aLabel, bLabel,
+        bgA: isA ? "var(--primary)" : "transparent",
+        borderA: isA ? "var(--primary)" : "var(--border)",
+        fgA: isA ? "var(--primary-foreground)" : "var(--foreground)",
+        markA: isA ? "✓ " : "",
+        bgB: isB ? "var(--secondary)" : "transparent",
+        borderB: isB ? "var(--secondary)" : "var(--border)",
+        fgB: isB ? "var(--secondary-foreground)" : "var(--foreground)",
+        markB: isB ? "✓ " : "",
+        bgN: isN ? "var(--muted-foreground)" : "transparent",
+        borderN: isN ? "var(--muted-foreground)" : "var(--border)",
+        fgN: isN ? "var(--card)" : "var(--muted-foreground)",
+        pickA: () => this.pick(rowPi, di, "a"),
+        pickB: () => this.pick(rowPi, di, "b"),
+        pickN: () => this.pick(rowPi, di, "n")
+      };
+    };
+
+    const rows = mode === "person"
+      ? DAYS.map((d, di) => optionRow(pi, di, d.day, d.date, dayTotals(di), d.a, d.b))
+      : PEOPLE.map((n, rowPi) => optionRow(rowPi, di0, n, "", "", "optie A", "optie B"));
+
+    const dotColor = v => v === "a" ? "var(--primary)" : v === "b" ? "var(--secondary)" : "var(--border)";
+    const sideItems = mode === "person"
+      ? PEOPLE.map((n, i) => {
+          const active = i === pi;
+          return {
+            name: n,
+            initials: n.split(" ")[0][0] + n.split(" ").slice(-1)[0][0],
+            bg: active ? "var(--accent)" : "transparent",
+            border: active ? "var(--primary)" : "var(--border)",
+            avatarBg: active ? "var(--primary)" : "var(--muted)",
+            avatarFg: active ? "var(--primary-foreground)" : "var(--muted-foreground)",
+            dots: picks[i].map(v => ({ color: dotColor(v) })),
+            select: () => this.setState({ person: i })
+          };
+        })
+      : DAYS.map((d, di) => {
+          const active = di === di0;
+          return {
+            name: d.day,
+            initials: d.date.split(" ")[0],
+            bg: active ? "var(--accent)" : "transparent",
+            border: active ? "var(--primary)" : "var(--border)",
+            avatarBg: active ? "var(--primary)" : "var(--muted)",
+            avatarFg: active ? "var(--primary-foreground)" : "var(--muted-foreground)",
+            dots: picks.map(row => ({ color: dotColor(row[di]) })),
+            select: () => this.setState({ day: di })
+          };
+        });
+
+    const name = PEOPLE[pi];
+    const day0 = DAYS[di0];
+
+    const layoutVals = L === "portrait" ? {
+      pad: "24px", statGap: "20px", stepsDisplay: "none", titleSize: "26px",
+      sideW: "228px", sideRowH: "68px", sideListH: "356px", sideNameSize: "18px", sideVisible: 5,
+      dayCol: "132px", noneCol: "104px", cellGap: "8px", btnH: "84px", rowH: "108px",
+      dayNameSize: "20px", recipeSize: "19px", personSize: "22px"
+    } : L === "landscape" ? {
+      pad: "34px", statGap: "26px", stepsDisplay: "none", titleSize: "32px",
+      sideW: "276px", sideRowH: "72px", sideListH: "376px", sideNameSize: "19px", sideVisible: 5,
+      dayCol: "180px", noneCol: "124px", cellGap: "10px", btnH: "84px", rowH: "108px",
+      dayNameSize: "22px", recipeSize: "21px", personSize: "24px"
+    } : {
+      pad: "56px", statGap: "40px", stepsDisplay: "flex", titleSize: "38px",
+      sideW: "340px", sideRowH: "78px", sideListH: "488px", sideNameSize: "22px", sideVisible: 6,
+      dayCol: "240px", noneCol: "156px", cellGap: "14px", btnH: "96px", rowH: "122px",
+      dayNameSize: "26px", recipeSize: "26px", personSize: "28px"
+    };
+
+    return Object.assign({}, layoutVals, {
+      scale: this.state.scale,
+      baseW: this.state.base[0] + "px",
+      baseH: this.state.base[1] + "px",
+      rows,
+      sideItems,
+      sideTitle: mode === "person" ? "Woongroep 3 · " + size + " bewoners" : "Week 35 · 7 dagen",
+      rosterHint: mode === "person" ? "Scroll voor alle " + size + " bewoners" : "Kies een dag",
+      personModeBg: mode === "person" ? "var(--primary)" : "transparent",
+      personModeFg: mode === "person" ? "var(--primary-foreground)" : "var(--foreground)",
+      dayModeBg: mode === "day" ? "var(--primary)" : "transparent",
+      dayModeFg: mode === "day" ? "var(--primary-foreground)" : "var(--foreground)",
+      setPersonMode: () => this.setState({ mode: "person" }),
+      setDayMode: () => this.setState({ mode: "day" }),
+      headBadge: mode === "person" ? name.split(" ")[0][0] + name.split(" ").slice(-1)[0][0] : day0.date.split(" ")[0],
+      headTitle: mode === "person" ? name : day0.day + " " + day0.date,
+      headSub: mode === "person" ? "alle 7 dagen · " + picks[pi].filter(v => v === "n").length + "× geen eten" : size + " bewoners · " + dayTotals(di0).replace("groep: ", ""),
+      dishesDisplay: mode === "day" ? "flex" : "none",
+      dayA: day0.a,
+      dayB: day0.b,
+      modeSubtitle: mode === "person" ? "Weekmenu per persoon" : "Weekmenu per dag",
+      groupLabel: size + " personen",
+      weekRange: week + " · ma 24 t/m zo 30 augustus",
+      headline: mode === "person" ? "Keuzes voor " + name : "Keuzes op " + day0.day.toLowerCase(),
+      dayPageLabel: mode === "person" ? "Alle 7 dagen · maandag t/m zondag" : "Alle " + size + " bewoners",
+      scrollHint: mode === "person" ? "Scroll voor de rest van de week" : "Scroll voor de rest van de groep",
+      grandTotal: servedTotal + " porties",
+      skipTotal: skipTotal + " keer geen eten"
+    });
+  }
+}
+</script>
+</body>
+</html>
