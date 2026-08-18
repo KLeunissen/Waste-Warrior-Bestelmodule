@@ -1,0 +1,188 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": []
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Asap Condensed|Asap))/i]",
+        "message": "Font not provided by the design system. Available: Asap Condensed, Asap."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--accent",
+      "--accent-foreground",
+      "--background",
+      "--border",
+      "--card",
+      "--card-foreground",
+      "--chart-1",
+      "--chart-2",
+      "--chart-3",
+      "--chart-4",
+      "--chart-5",
+      "--chart-ink",
+      "--destructive",
+      "--destructive-foreground",
+      "--elevation-0",
+      "--elevation-1",
+      "--elevation-2",
+      "--font-body",
+      "--font-heading",
+      "--font-sans",
+      "--foreground",
+      "--fs-body",
+      "--fs-display",
+      "--fs-eyebrow",
+      "--fs-headline",
+      "--fs-label",
+      "--fs-subhead",
+      "--fw-body",
+      "--fw-display",
+      "--fw-eyebrow",
+      "--fw-headline",
+      "--fw-label",
+      "--fw-subhead",
+      "--graph-1",
+      "--input",
+      "--lh-body",
+      "--lh-display",
+      "--lh-eyebrow",
+      "--lh-headline",
+      "--lh-label",
+      "--lh-subhead",
+      "--muted",
+      "--muted-foreground",
+      "--primary",
+      "--primary-foreground",
+      "--radius",
+      "--radius-lg",
+      "--radius-md",
+      "--radius-pill",
+      "--radius-sm",
+      "--radius-xl",
+      "--radius-xs",
+      "--ring",
+      "--secondary",
+      "--secondary-foreground",
+      "--space-1",
+      "--space-10",
+      "--space-12",
+      "--space-16",
+      "--space-2",
+      "--space-20",
+      "--space-3",
+      "--space-4",
+      "--space-5",
+      "--space-6",
+      "--space-8"
+    ],
+    "tokenKinds": {
+      "--background": "color",
+      "--card": "color",
+      "--muted": "color",
+      "--accent": "color",
+      "--border": "color",
+      "--input": "color",
+      "--foreground": "color",
+      "--card-foreground": "color",
+      "--muted-foreground": "color",
+      "--accent-foreground": "color",
+      "--primary": "color",
+      "--primary-foreground": "color",
+      "--secondary": "color",
+      "--secondary-foreground": "color",
+      "--destructive": "color",
+      "--destructive-foreground": "color",
+      "--ring": "color",
+      "--chart-1": "color",
+      "--chart-2": "color",
+      "--chart-3": "color",
+      "--chart-4": "color",
+      "--chart-5": "color",
+      "--chart-ink": "color",
+      "--graph-1": "color",
+      "--font-heading": "font",
+      "--font-sans": "font",
+      "--font-body": "font",
+      "--fs-display": "spacing",
+      "--lh-display": "other",
+      "--fw-display": "other",
+      "--fs-headline": "spacing",
+      "--lh-headline": "other",
+      "--fw-headline": "other",
+      "--fs-subhead": "spacing",
+      "--lh-subhead": "other",
+      "--fw-subhead": "other",
+      "--fs-body": "spacing",
+      "--lh-body": "other",
+      "--fw-body": "other",
+      "--fs-label": "spacing",
+      "--lh-label": "other",
+      "--fw-label": "other",
+      "--fs-eyebrow": "spacing",
+      "--lh-eyebrow": "other",
+      "--fw-eyebrow": "other",
+      "--radius-xs": "radius",
+      "--radius-sm": "radius",
+      "--radius": "radius",
+      "--radius-md": "radius",
+      "--radius-lg": "radius",
+      "--radius-xl": "radius",
+      "--radius-pill": "radius",
+      "--space-1": "spacing",
+      "--space-2": "spacing",
+      "--space-3": "spacing",
+      "--space-4": "spacing",
+      "--space-5": "spacing",
+      "--space-6": "spacing",
+      "--space-8": "spacing",
+      "--space-10": "spacing",
+      "--space-12": "spacing",
+      "--space-16": "spacing",
+      "--space-20": "spacing",
+      "--elevation-0": "shadow",
+      "--elevation-1": "shadow",
+      "--elevation-2": "shadow"
+    },
+    "fontFamilies": [
+      "Asap",
+      "Asap Condensed"
+    ]
+  }
+}

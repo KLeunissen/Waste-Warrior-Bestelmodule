@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Waste Warrior — Brand foundations · globals.css
+   v1 · 2026 — oklch tokens, default + .contrast variant
+   ========================================================================== */
+
+/* ---------- Fonts ---------- */
+/* Asap Condensed — local files (display / headings / UI labels) */
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-ExtraLight.ttf") format("truetype"); font-weight: 200; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-Light.ttf")      format("truetype"); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-Regular.ttf")    format("truetype"); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-Medium.ttf")     format("truetype"); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-SemiBold.ttf")   format("truetype"); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-Bold.ttf")       format("truetype"); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-ExtraBold.ttf")  format("truetype"); font-weight: 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-Black.ttf")      format("truetype"); font-weight: 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-Italic.ttf")     format("truetype"); font-weight: 400; font-style: italic; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-MediumItalic.ttf")    format("truetype"); font-weight: 500; font-style: italic; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-SemiBoldItalic.ttf")  format("truetype"); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: "Asap Condensed"; src: url("./fonts/AsapCondensed-BoldItalic.ttf")      format("truetype"); font-weight: 700; font-style: italic; font-display: swap; }
+
+/* Asap (regular width, variable) — local files */
+@font-face { font-family: "Asap"; src: url("./fonts/Asap-VariableFont_wdth_wght.ttf")        format("truetype-variations"); font-weight: 100 900; font-stretch: 75% 125%; font-style: normal; font-display: swap; }
+@font-face { font-family: "Asap"; src: url("./fonts/Asap-Italic-VariableFont_wdth_wght.ttf") format("truetype-variations"); font-weight: 100 900; font-stretch: 75% 125%; font-style: italic; font-display: swap; }
+
+:root {
+  /* ==============================================
+     DEFAULT PALETTE — sun-bleached cream + mineral teal
+     ============================================== */
+
+  /* Surfaces */
+  --background:        oklch(0.955 0.018 80);     /* warm cream page */
+  --card:              oklch(0.985 0.010 80);     /* lighter cream surface */
+  --muted:             oklch(0.915 0.014 70);     /* warm light grey */
+  --accent:            oklch(0.880 0.025 75);     /* warm beige */
+  --border:            oklch(0.845 0.020 70);     /* warm grey border */
+  --input:             oklch(0.985 0.010 80);     /* input fill */
+
+  /* Foreground / text */
+  --foreground:        oklch(0.200 0.020 40);     /* near-black, warm */
+  --card-foreground:   oklch(0.200 0.020 40);
+  --muted-foreground:  oklch(0.420 0.020 50);
+  --accent-foreground: oklch(0.200 0.020 40);
+
+  /* Roles */
+  --primary:                 oklch(0.420 0.053 190);  /* deep mineral teal */
+  --primary-foreground:      oklch(0.985 0.010 80);
+  --secondary:               oklch(0.700 0.110 68);   /* warm copper / tan */
+  --secondary-foreground:    oklch(0.985 0.010 80);
+  --destructive:             oklch(0.550 0.190 18);   /* deep red */
+  --destructive-foreground:  oklch(0.985 0.010 80);
+  --ring:                    oklch(0.740 0.056 131);  /* muted sage focus ring */
+
+  /* ==============================================
+     CHART — categorical palette for graphs & infographics
+     Used by donut, bar, stacked, and ranked series.
+     ============================================== */
+  --chart-1: var(--primary);                 /* teal */
+  --chart-2: var(--secondary);               /* copper */
+  --chart-3: var(--destructive);             /* red */
+  --chart-4: oklch(0.78 0.020 165);          /* muted sage (small / "other") */
+  --chart-5: oklch(0.62 0.180 132);          /* phosphor green — wins / positive */
+  --chart-ink: var(--foreground);            /* near-black, ranked number badges */
+
+  /* Graph series — saturated brand-aligned hues for ranked / bar charts. */
+  --graph-1: oklch(0.70 0.197 124.3);        /* spring green */
+
+  /* ==============================================
+     TYPOGRAPHY
+     ============================================== */
+  --font-heading: "Asap Condensed", system-ui, sans-serif;
+  --font-sans:    "Asap", "Asap Condensed", system-ui, sans-serif;
+  --font-body:    "Asap", system-ui, sans-serif;
+
+  /* Type scale (semantic) */
+  --fs-display:  40px;  --lh-display: 1.05;  --fw-display: 700;
+  --fs-headline: 28px;  --lh-headline: 1.15; --fw-headline: 600;
+  --fs-subhead:  20px;  --lh-subhead: 1.25;  --fw-subhead: 500;
+  --fs-body:     17px;  --lh-body:    1.5;   --fw-body:    400;
+  --fs-label:    14px;  --lh-label:   1.4;   --fw-label:   500;
+  --fs-eyebrow:  11px;  --lh-eyebrow: 1.2;   --fw-eyebrow: 500;
+
+  /* ==============================================
+     RADII — soft, modest
+     ============================================== */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius:    10px;     /* default card / button */
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  /* ==============================================
+     SPACING — 4-based scale
+     ============================================== */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ==============================================
+     ELEVATION — minimal; cards prefer borders to shadows
+     ============================================== */
+  --elevation-0: none;
+  --elevation-1: 0 1px 2px oklch(0.20 0.02 40 / 0.06);
+  --elevation-2: 0 4px 12px oklch(0.20 0.02 40 / 0.08);
+}
+
+/* ==============================================
+   .contrast — section-level palette flip
+   Same DOM, different tokens. Wrap any element in
+   .contrast to switch into the deep-teal scheme.
+   ============================================== */
+.contrast {
+  --background:        oklch(0.295 0.030 175);
+  --card:              oklch(0.340 0.030 175);
+  --muted:             oklch(0.390 0.020 175);
+  --accent:            oklch(0.520 0.060 170);
+  --border:            oklch(0.410 0.020 175);
+  --input:             oklch(0.345 0.025 175);
+
+  --foreground:        oklch(0.955 0.018 80);
+  --card-foreground:   oklch(0.955 0.018 80);
+  --muted-foreground:  oklch(0.780 0.015 80);
+  --accent-foreground: oklch(0.955 0.018 80);
+
+  --primary:                 oklch(0.850 0.150 124);   /* phosphor green */
+  --primary-foreground:      oklch(0.200 0.020 40);
+  --secondary:               oklch(0.700 0.110 68);    /* same copper */
+  --secondary-foreground:    oklch(0.985 0.010 80);
+  --destructive:             oklch(0.740 0.260 18);    /* hot pink */
+  --destructive-foreground:  oklch(0.200 0.020 40);
+  --ring:                    oklch(0.740 0.056 131);
+}
+
+/* ==============================================
+   Base resets used by previews
+   ============================================== */
+html, body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+* { box-sizing: border-box; }
+
+/* ==============================================
+   Type utility classes
+   ============================================== */
+.t-display  { font-family: var(--font-heading); font-weight: var(--fw-display);  font-size: var(--fs-display);  line-height: var(--lh-display);  letter-spacing: -0.005em; }
+.t-headline { font-family: var(--font-heading); font-weight: var(--fw-headline); font-size: var(--fs-headline); line-height: var(--lh-headline); }
+.t-subhead  { font-family: var(--font-heading); font-weight: var(--fw-subhead);  font-size: var(--fs-subhead);  line-height: var(--lh-subhead); }
+.t-body     { font-family: var(--font-body);    font-weight: var(--fw-body);     font-size: var(--fs-body);     line-height: var(--lh-body); }
+.t-label    { font-family: var(--font-body);    font-weight: var(--fw-label);    font-size: var(--fs-label);    line-height: var(--lh-label); }
+.t-eyebrow  { font-family: var(--font-body);    font-weight: var(--fw-eyebrow);  font-size: var(--fs-eyebrow);  line-height: var(--lh-eyebrow); letter-spacing: 0.08em; color: var(--muted-foreground); }
+.t-mono     { font-family: ui-monospace, "Roboto Mono", monospace; font-size: 12px; color: var(--muted-foreground); }
+
+/* Eyebrow rule: tracked, NOT uppercase. Sentence case everywhere. */
